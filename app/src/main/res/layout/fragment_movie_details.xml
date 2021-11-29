@@ -23,17 +23,14 @@
 
         <ImageView
             android:id="@+id/moviePoster"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="300dp"
-            android:layout_marginTop="0dp"
-            android:scaleType="centerCrop"
+android:padding="16dp"
             app:imagUrl="@{viewModel2.moviePoster}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars" />
-
 
         <TextView
             android:id="@+id/Title"
@@ -74,15 +71,16 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@{viewModel2.rateing.toString()}"
-            android:textSize="30dp"
             android:textColor="@color/yallo"
+            android:textSize="30dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/Title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/moviePoster"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="1.0"
+            tools:text="10" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
