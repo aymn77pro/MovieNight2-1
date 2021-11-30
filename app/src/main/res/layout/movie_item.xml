@@ -22,18 +22,12 @@
         android:id="@+id/cerdView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:layout_marginTop="2dp"
         android:background="#6F0C0B19"
         android:clickable="true"
-        android:padding="1dp"
-        app:cardBackgroundColor="#8F0E256C"
-        card_view:cardCornerRadius="5dp"
-        card_view:cardElevation="10dp"
-        card_view:cardMaxElevation="15dp"
-        card_view:cardPreventCornerOverlap="false"
-        card_view:cardUseCompatPadding="true"
-        card_view:contentPadding="5dp">
+        android:padding="16dp"
+        app:cardBackgroundColor="#8F000000"
+
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="360dp"
@@ -43,10 +37,10 @@
 
             <ImageView
                 android:id="@+id/moviePoster"
-                android:layout_width="200dp"
-                android:layout_height="250dp"
-                android:foregroundGravity="center_vertical"
-                android:padding="0dp"
+                android:layout_width="148dp"
+                android:layout_height="179dp"
+                android:padding="6dp"
+                android:scaleType="fitXY"
                 app:imagUrl="@{movieInformtion.posterPath}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

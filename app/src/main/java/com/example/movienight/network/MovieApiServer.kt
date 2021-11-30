@@ -7,7 +7,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
 import retrofit2.http.GET
-//////hfhhtftffhgvtfhtfvhgv
+import retrofit2.http.Query
+
 private const val BASE_URL =
     "https://api.themoviedb.org/"
 private val moshi = Moshi.Builder()
@@ -16,8 +17,8 @@ private val moshi = Moshi.Builder()
 private val retrofit = Retrofit.Builder()
     .addConverterFactory(MoshiConverterFactory.create(moshi)).baseUrl(BASE_URL).build()
 interface MovieApiServer{
-    @GET("3/movie/popular?api_key=8c89f63f1970a7c5a4ce4c3e270a0cee&language=en-US&page=1")
-    suspend fun getPhoto():Response
+    @GET("3/movie/popular?api_key=8c89f63f1970a7c5a4ce4c3e270a0cee&language=en-US&")
+    suspend fun getPhoto(@Query("page")page:Int,@Query("with_genres")genres:Int):Response
 }
 object MovieApi{
     val retrofitServer : MovieApiServer by lazy {
