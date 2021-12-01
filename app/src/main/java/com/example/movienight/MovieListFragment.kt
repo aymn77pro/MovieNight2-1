@@ -35,7 +35,7 @@ class MovieListFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.SHOW_ALL -> viewModel.getMovieInfo()
-            R.id.Show_sortByRelesDate -> viewModel.sortMovieByReleaseDate("release_date.lte")
+            R.id.Show_sortByRelesDate -> viewModel.sortMovieByReleaseDate("primary_release_date.gte\n")
             R.id.show_action_menu -> viewModel.getMoviewithGener(MovieGenre.ACTION)
             R.id.show_adventure_menu -> viewModel.getMoviewithGener(MovieGenre.ADVENTUR)
             else -> viewModel.getMoviewithGener(MovieGenre.ANIMATIONE)

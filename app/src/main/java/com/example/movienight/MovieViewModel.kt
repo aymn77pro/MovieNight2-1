@@ -76,19 +76,9 @@ class MovieViewModel:ViewModel() {
     }
  fun moviInfoData(position:Int){
      val item= _movieInfo.value?.get(position)
-     Log.e("TAG","idMovie:${item?.id}")
-     Log.e("TAG","id view:${position}")
      _movieName.value = item?.originalTitle
      moviePoster.value=item?.posterPath
      overView.value = item?.overview
      rateing.value = item?.voteAverage
-
-     Log.e("TAG","movie picture:${moviePoster}")
-
-
  }
-fun updataList(value:MovieGenre){
-    getMoviewithGener(value)
-}
-
 }
