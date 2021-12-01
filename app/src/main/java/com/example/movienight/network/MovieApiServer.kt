@@ -18,7 +18,11 @@ private val retrofit = Retrofit.Builder()
     .addConverterFactory(MoshiConverterFactory.create(moshi)).baseUrl(BASE_URL).build()
 interface MovieApiServer{
     @GET("3/movie/popular?api_key=8c89f63f1970a7c5a4ce4c3e270a0cee&language=en-US&")
-    suspend fun getPhoto(@Query("page")page:Int,@Query("with_genres")genres:Int):Response
+    suspend fun getPhoto(@Query("page")page:Int):Response
+    @GET("3/movie/popular?api_key=8c89f63f1970a7c5a4ce4c3e270a0cee&language=en-US&")
+    suspend fun getPhotoFilter(@Query("page")page:Int,@Query("with_genres")genres:Int):Response
+    @GET("3/discover/movie?api_key=8c89f63f1970a7c5a4ce4c3e270a0cee&language=en-US&")
+    suspend fun sortMovieByReleaseDate(@Query("sort_by")releaseDate: String): Response
 }
 object MovieApi{
     val retrofitServer : MovieApiServer by lazy {

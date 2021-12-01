@@ -8,7 +8,6 @@ import androidx.fragment.app.viewModels
 import com.example.movienight.databinding.FragmentMovieListBinding
 
 class MovieListFragment : Fragment() {
-   // private var binding:FragmentMovieListBinding? = null
     private val viewModel:MovieViewModel by activityViewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,13 +33,21 @@ class MovieListFragment : Fragment() {
 
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        viewModel.updataList(
-            when (item.itemId) {
-                R.id.show_action_menu -> MovieGenre.ACTION
-                R.id.show_adventure_menu -> MovieGenre.DRAMA
-                else ->  MovieGenre.ANIMATIONE
-            }
-        )
+        when(item.itemId){
+            R.id.SHOW_ALL -> viewModel.getMovieInfo()
+            R.id.Show_sortByRelesDate -> viewModel.sortMovieByReleaseDate("release_date.lte")
+            R.id.show_action_menu -> viewModel.getMoviewithGener(MovieGenre.ACTION)
+            R.id.show_adventure_menu -> viewModel.getMoviewithGener(MovieGenre.ADVENTUR)
+            else -> viewModel.getMoviewithGener(MovieGenre.ANIMATIONE)
+        }
+
+//        viewModel.updataList(
+//            when (item.itemId) {
+//                R.id.show_action_menu -> MovieGenre.ACTION
+//                R.id.show_adventure_menu -> MovieGenre.DRAMA
+//                else ->  MovieGenre.ANIMATIONE
+//            }
+//        )
         return true
     }
 

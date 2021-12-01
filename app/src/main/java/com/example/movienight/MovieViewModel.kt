@@ -7,6 +7,7 @@ import com.example.movienight.network.ResultsItem
 import kotlinx.coroutines.launch
 
 enum class MovieApiStatus {LOADING, ERROR, DONE}
+//------------------------------------------------------
 enum class MovieGenre(val value : Int){
     ACTION(28),
     ADVENTUR(12),
@@ -18,6 +19,7 @@ enum class MovieGenre(val value : Int){
     FAMILY(10751),
     HORROR(27)
 }
+//----------------------------------------
 
 class MovieViewModel:ViewModel() {
     private val _status = MutableLiveData<MovieApiStatus>()
@@ -30,17 +32,41 @@ class MovieViewModel:ViewModel() {
     val overView = MutableLiveData<String>()
     val rateing = MediatorLiveData<Double>()
     init {
-        getMovieInfo(MovieGenre.DRAMA)
-
+        getMovieInfo()
     }
 
 
 
-    private fun getMovieInfo(falter: MovieGenre){
+
+     fun getMovieInfo(){
         viewModelScope.launch {
             _status.value = MovieApiStatus.LOADING
             try {
-                _movieInfo.value = MovieApi.retrofitServer.getPhoto(2,falter.value).results
+                _movieInfo.value = MovieApi.retrofitServer.getPhoto(2).results
+                _status.value = MovieApiStatus.DONE
+            }catch (e:Exception){
+                _status.value=MovieApiStatus.ERROR
+                _movieInfo.value = listOf()
+            }
+        }
+    }
+    fun getMoviewithGener(filter:MovieGenre){
+        viewModelScope.launch {
+            _status.value = MovieApiStatus.LOADING
+            try {
+                _movieInfo.value = MovieApi.retrofitServer.getPhotoFilter(2,filter.value).results
+                _status.value = MovieApiStatus.DONE
+            }catch (e:Exception){
+                _status.value=MovieApiStatus.ERROR
+                _movieInfo.value = listOf()
+            }
+        }
+    }
+    fun sortMovieByReleaseDate(Time:String){
+        viewModelScope.launch {
+            _status.value = MovieApiStatus.LOADING
+            try {
+                _movieInfo.value = MovieApi.retrofitServer.sortMovieByReleaseDate(Time).results
                 _status.value = MovieApiStatus.DONE
             }catch (e:Exception){
                 _status.value=MovieApiStatus.ERROR
@@ -62,7 +88,7 @@ class MovieViewModel:ViewModel() {
 
  }
 fun updataList(value:MovieGenre){
-    getMovieInfo(value)
+    getMoviewithGener(value)
 }
 
 }
