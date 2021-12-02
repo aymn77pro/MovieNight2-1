@@ -16,7 +16,7 @@
     <fragment
         android:id="@+id/movieDetailsFragment"
         android:name="com.example.movienight.MovieDetailsFragment"
-        android:label="Movie informiton">
+        android:label="Movie informtion">
         <action
             android:id="@+id/action_movieDetailsFragment_to_movieListFragment"
             app:destination="@id/movieListFragment" />

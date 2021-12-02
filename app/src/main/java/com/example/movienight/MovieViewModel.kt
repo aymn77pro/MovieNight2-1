@@ -76,7 +76,7 @@ class MovieViewModel:ViewModel() {
             }
         }
     }
- fun moviInfoData(position:Int){
+ fun movieInfnoData(position:Int){
      val item= _movieInfo.value?.get(position)
      _movieName.value = item?.title
      moviePoster.value=item?.posterPath
