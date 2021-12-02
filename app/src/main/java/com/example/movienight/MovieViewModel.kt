@@ -31,6 +31,8 @@ class MovieViewModel:ViewModel() {
     val moviePoster = MutableLiveData<String>()
     val overView = MutableLiveData<String>()
     val rateing = MediatorLiveData<Double>()
+    val secendImage = MutableLiveData<String>()
+    val movieId = MutableLiveData<Int>()
     init {
         getMovieInfo()
     }
@@ -76,9 +78,11 @@ class MovieViewModel:ViewModel() {
     }
  fun moviInfoData(position:Int){
      val item= _movieInfo.value?.get(position)
-     _movieName.value = item?.originalTitle
+     _movieName.value = item?.title
      moviePoster.value=item?.posterPath
      overView.value = item?.overview
      rateing.value = item?.voteAverage
+     secendImage.value = item?.backdropPath
+     movieId.value = item?.id
  }
 }

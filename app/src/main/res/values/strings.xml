@@ -2,4 +2,5 @@
     <string name="app_name">Movie Night</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="rating_viewmodel2_rateing_tostring">Rating:@{viewModel2.rateing.toString()}</string>
 </resources>

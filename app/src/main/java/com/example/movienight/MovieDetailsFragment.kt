@@ -1,6 +1,7 @@
 package com.example.movienight
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -33,7 +34,13 @@ class MovieDetailsFragment : Fragment() {
         val  binding = FragmentMovieDetailsBinding.inflate(inflater)
         binding.lifecycleOwner = this
         binding.viewModel2 = viewModel
-
+        binding.share.setOnClickListener {
+            val intent = Intent(Intent.ACTION_SEND).putExtra(Intent.EXTRA_TEXT,"I'm watching ${viewModel._movieName.value} link : https://www.themoviedb.org/movie/${viewModel.movieId.value}")
+                .setType("text/plain")
+            if (activity?.packageManager?.resolveActivity(intent, 0) != null) {
+                startActivity(intent)
+            }
+        }
         return binding?.root
 
     }
@@ -42,6 +49,7 @@ class MovieDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         Log.e("TAG","idMovie:${Movie}")
         viewModel.moviInfoData(Movie)
+
 
     }
 
