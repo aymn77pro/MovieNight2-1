@@ -44,7 +44,6 @@ class MovieDetailsFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.e("TAG","idMovie:${Movie}")
         viewModel.movieInfnoData(Movie)
     }
 }
